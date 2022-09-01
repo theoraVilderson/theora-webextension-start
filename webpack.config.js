@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 function srcPath(...args) {
   return path.resolve(__dirname, "src", ...args);
@@ -19,18 +20,22 @@ const config = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
+        exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+        exclude: /node_modules/,
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: "asset/resource",
+        exclude: /node_modules/,
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         type: "asset/inline",
+        exclude: /node_modules/,
       },
     ],
   },
@@ -47,6 +52,13 @@ const popupPageScript = Object.assign({}, config, {
     filename: "index.js",
     path: distPath("pages", "popup"),
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "document title",
+      filename: "html_pop.html",
+      template: srcPath("pages", "popup", "html_pop_template.html"),
+    }),
+  ],
 });
 const backgroundScript = Object.assign({}, config, {
   name: "backgroundScript",
