@@ -1,4 +1,3 @@
-const http = require("http");
 const chokidar = require("chokidar");
 const path = require("path");
 const PORT = 4293;

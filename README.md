@@ -2,22 +2,44 @@
 
 -**this template file has been created for starting faster webExtension projects**
 
-#### step 1
+#### #step 1
+
+-   : clone project
 
 ```console
-    npm i  #for installation
+    git clone https://github.com/theoraVilderson/theora-webextension-start.git
 ```
 
-#### step 2
+#### #step 2
+
+-   : cd to it (you can rename this folder as your web extension name)
 
 ```console
-    npm run webpack  #for start webpack watch compiler
+    cd theora-webextension-start
 ```
 
-#### step 3 (in new console tab)
+#### #step 3
+
+-   : #for installation
 
 ```console
-    npm run hotReload  #for start hot reload compiler
+    npm install
+```
+
+#### #step 4
+
+-   : #for start webpack watch compiler
+
+```console
+    npm run webpack
+```
+
+#### #step 5 (in new console tab)
+
+-   : #for start hot reload compiler
+
+```console
+    npm run hotReload
 
 ```
 
