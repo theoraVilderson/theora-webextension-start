@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "extension name",
+  "version": "1.0.3",
+  "icons": {
+    "16": "dist/icons/icon16.png",
+    "40": "dist/icons/icon40.png",
+    "48": "dist/icons/icon48.png",
+    "73": "dist/icons/icon73.png",
+    "128": "dist/icons/icon128.png",
+    "240": "dist/icons/icon240.png"
+  },
+  "action": {
+    "icons": {
+      "16": "dist/icons/icon16.png",
+      "40": "dist/icons/icon40.png",
+      "48": "dist/icons/icon48.png",
+      "73": "dist/icons/icon73.png",
+      "128": "dist/icons/icon128.png",
+      "240": "dist/icons/icon240.png"
+    },
+    "default_popup": "dist/pages/popup/html_pop.html"
+  },
+  "background": {
+    "service_worker": "./dist/backgroundServices/controller.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./dist/contentScripts/webScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["./dist/icons/icon128.png"]
+    }
+  ],
+  "host_permissions": ["<all_urls>"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "contextMenus",
+    "notifications",
+    "declarativeNetRequest",
+    "management"
+  ],
+  "description": "your description"
+}
