@@ -2,7 +2,7 @@ const http = require("http");
 const Server = require("socket.io").Server;
 const chokidar = require("chokidar");
 const path = require("path");
-const PORT = 3013;
+const PORT = 4293;
 const EXTENSION_DIRECTORY = path.resolve(__dirname, "app");
 const WebSocket = require("ws");
 const wsServer = new WebSocket.Server({
@@ -50,10 +50,7 @@ chokidar
 
 wsServer.on("connection", function (socket) {
   sockets.push(socket);
-  console.log("got conneciton");
-  socket.on("message", function (msg) {
-    console.log("Received Message:", msg);
-  });
+  console.log("got connection");
   socket.on("close", function () {
     console.log("Client has disconnected.");
     sockets = sockets.filter((s) => s !== socket);

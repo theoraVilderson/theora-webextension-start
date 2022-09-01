@@ -3,8 +3,7 @@ import browser from "webextension-polyfill";
 let websocket: WebSocket | undefined;
 function createWebSocketConnection() {
   if ("WebSocket" in globalThis) {
-    console.log("we are here");
-    connect("ws://localhost:3013");
+    connect("ws://localhost:4293");
   }
 }
 
