@@ -1,5 +1,4 @@
 const http = require("http");
-const Server = require("socket.io").Server;
 const chokidar = require("chokidar");
 const path = require("path");
 const PORT = 4293;
