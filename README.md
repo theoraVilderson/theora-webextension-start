@@ -28,19 +28,10 @@
 
 #### #step 4
 
--   : #for start webpack watch compiler
+-   : #start project
 
 ```console
-    npm run webpack
-```
-
-#### #step 5 (in new console tab)
-
--   : #for start hot reload compiler
-
-```console
-    npm run hotReload
-
+    npm run dev
 ```
 
 #### all Right We are Done!!

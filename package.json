@@ -24,13 +24,15 @@
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.16",
     "sass": "^1.54.8",
-    "postcss-loader": "^7.0.1"
+    "postcss-loader": "^7.0.1",
+    "ws": "^8.8.1"
   },
   "name": "theora-1secmail-browser-extention",
   "version": "1.0.0",
   "scripts": {
     "webpack": "webpack",
-    "serverHotReload": "node hot-reload-server.js"
+    "hotReload": "node hot-reload-server.js",
+    "dev": "node start.js"
   },
   "keywords": [],
   "author": "",
