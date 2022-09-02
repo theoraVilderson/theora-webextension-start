@@ -34,6 +34,16 @@
     npm run dev
 ```
 
+#### #step 5
+
+-   : #your application for development need background script !! (Required)
+-   : #you must open up the background service inspector to socket connection session to not close!!
+-   : path for background script inspector
+-   => got extensions
+-   => and select the target extension
+-   => go to details
+-   => and hit the service worker (or background script) text (it's as link will open up the inspector as separate window)
+
 #### all Right We are Done!!
 
 ### How to use it
