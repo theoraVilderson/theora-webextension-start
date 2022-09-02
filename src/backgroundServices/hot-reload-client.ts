@@ -1,15 +1,19 @@
 import browser from "webextension-polyfill";
 
 let websocket: WebSocket | undefined;
-function createWebSocketConnection() {
+function createWebSocketConnection(force = false) {
   if ("WebSocket" in globalThis) {
-    connect("ws://localhost:4293");
+    console.log("socket server connected");
+    connect("ws://localhost:3013", force);
   }
 }
 
 //Make a websocket connection with the server.
-function connect(host: string) {
-  if (websocket === undefined) {
+function connect(host: string, force: boolean) {
+  if (websocket === undefined || force) {
+    if (websocket) {
+      closeWebSocketConnection();
+    }
     websocket = new WebSocket(host);
   }
 
@@ -34,28 +38,31 @@ function connect(host: string) {
       .then((tabs) => {
         if (!(tabs && tabs.length)) return;
         const allTabs = tabs.filter(
-          (tab) => tab.url && tab.url.includes(`${browser.runtime.id}`)
+          (tab) => tab.url && tab.url.includes(`/${browser.runtime.id}`)
         );
         allTabs.forEach((tab) => {
           browser.tabs.reload(tab.id);
         });
-        closeWebSocketConnection();
-
         console.log("tabs got updated");
       })
       .finally(() => {
-        console.log("background script got updated");
         if (
           typeof data?.data.file.scop === "string" &&
           data?.data.file.scop === "background"
-        )
+        ) {
+          console.log("background script got updated");
           browser.runtime.reload();
+        }
       });
   };
 
   //If the websocket is closed but the session is still active, create new connection again
   websocket.onclose = function () {
-    closeWebSocketConnection();
+    websocket = undefined;
+    console.log("connection has closed");
+    setTimeout(() => {
+      createWebSocketConnection();
+    }, 1000);
   };
 }
 
