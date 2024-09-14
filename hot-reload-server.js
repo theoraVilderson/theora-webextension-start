@@ -1,6 +1,6 @@
 const chokidar = require("chokidar");
 const path = require("path");
-const PORT = 4293;
+const PORT = 3031;
 const EXTENSION_DIRECTORY = path.resolve(__dirname, "app");
 const WebSocket = require("ws");
 const wsServer = new WebSocket.Server({
